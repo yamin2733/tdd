@@ -11,9 +11,9 @@ class NewVisitorTest(FunctionalTest):
 		inputbox.send_keys(Keys.ENTER)
 		self.wait_for_row_in_list_table("1: Buy peacock feathers")
 
-		inputbox = self.browser.find_element(By.ID,"id_new_item")
-		inputbox.send_keys("Use peacock feathers to make a fly")
-		inputbox.send_keys(Keys.ENTER)
+		inputbox2 = self.browser.find_element(By.ID,"id_new_item")
+		inputbox2.send_keys("Use peacock feathers to make a fly")
+		inputbox2.send_keys(Keys.ENTER)
 		self.wait_for_row_in_list_table("1: Buy peacock feathers")
 		self.wait_for_row_in_list_table("2: Use peacock feathers to make a fly")
 
