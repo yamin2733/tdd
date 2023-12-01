@@ -1,7 +1,8 @@
 from django.shortcuts import redirect,render
 from lists.models import Item, List
 from django.core.exceptions import ValidationError
-from lists.forms import ItemForm
+from lists.forms import ItemForm, EMPTY_ITEM_ERROR
+import pdb
 
 # Create your views here.
 def home_page(request):
