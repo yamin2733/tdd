@@ -1,8 +1,6 @@
-var initialize = function () {
-  console.log('initialize called');
-  $('input[name="text"]').on('keypress', function () { 
-    console.log('in keypress handler');
+window.Superlists = {}; 
+window.Superlists.initialize = function () { 
+  $('input[name="text"]').on('keypress', function () {
     $('.has-error').hide();
   });
 };
-console.log('list.js loaded');

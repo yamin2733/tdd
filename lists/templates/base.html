@@ -13,6 +13,11 @@
         <div class="col-lg-6 text-center">
           <h1 class="display-1 mb-4">{% block header_text %}{% endblock %}</h1>
           <form method="POST" action="{% block form_action %}{% endblock %}">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>    
+    <script src="/static/tests/qunit-2.6.0.js"></script>
+    <script src="/static/tests/qunit-2.6.0.css"></script>
+
             {{ form.text }}
             {% csrf_token %}
             {% if form.errors %}
@@ -30,5 +35,12 @@
         </div>
       </div>
     </div>
+<script src="/static/list.js"></script>
+<script> 
+
+  $(document).ready(function () 
+  {window.Superlists.initialize();}); 
+
+</script> 
   </body>
 </html>
