@@ -1,8 +1,10 @@
+import django
 from django.test import TestCase
 from lists.models import Item, List
 
 from lists.forms import ItemForm,EMPTY_ITEM_ERROR, DUPLICATE_ITEM_ERROR, ExistingListItemForm
 
+django.setup()
 
 class ItemFormTest(TestCase):
     def test_form_item_input_has_placeholder_and_css_classes(self):

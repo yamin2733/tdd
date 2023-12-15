@@ -2,6 +2,7 @@ from django.core import mail
 from selenium.webdriver.common.keys import Keys
 import re
 from selenium.webdriver.common.by import By
+import pdb
 
 from .base import FunctionalTest
 
@@ -16,9 +17,9 @@ class LoginTest(FunctionalTest):
         # and notices a "Log in" section in the navbar for the first time
         # It's telling her to enter her email address, so she does
         self.browser.get(self.live_server_url)
-        self.browser.find_element(By.NAME, 'email').send_keys(TEST_EMAIL)
-        self.browser.find_element(By.NAME, 'email').send_keys(Keys.ENTER)
-
+        input_email=self.browser.find_element(By.NAME, 'email')
+        input_email.send_keys(TEST_EMAIL)
+        input_email.send_keys(Keys.ENTER)
         # A message appears telling her an email has been sent
         self.wait_for(lambda: self.assertIn(
             'Check your email',
@@ -43,7 +44,10 @@ class LoginTest(FunctionalTest):
 
         # she is logged in!
         self.wait_for(
+
             lambda: self.browser.find_element(By.LINK_TEXT, 'Log out')
+
         )
+
         navbar = self.browser.find_element(By.CSS_SELECTOR, '.navbar')
         self.assertIn(TEST_EMAIL, navbar.text)
