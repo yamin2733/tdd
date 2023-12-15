@@ -1,7 +1,9 @@
 import sys
 from accounts.models import User, Token
+import pdb
+from django.contrib.auth.backends import ModelBackend
 
-class PasswordlessAuthenticationBackend(object):
+class PasswordlessAuthenticationBackend(ModelBackend):
 
     def authenticate(self, uid):
         try:
@@ -11,6 +13,7 @@ class PasswordlessAuthenticationBackend(object):
             return User.objects.create(email=token.email)
         except Token.DoesNotExist:
             return None
+
 
 
     def get_user(self, email):

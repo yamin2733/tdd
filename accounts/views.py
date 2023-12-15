@@ -2,12 +2,13 @@ import uuid
 import sys
 #from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login, logout as auth_logout
+#import login as auth_login
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from accounts.authentication import PasswordlessAuthenticationBackend
 from django.contrib import messages,auth
 from django.urls import reverse
-
+from accounts.models import Token
 
 import pdb
 from accounts.models import Token
@@ -28,10 +29,13 @@ from accounts.models import Token
     #return redirect('/')
 
 def login(request):
-    uid = request.GET.get('token')
-    user = PasswordlessAuthenticationBackend().authenticate(uid)
+    login_id = request.GET.get('token')
+    user = PasswordlessAuthenticationBackend().authenticate(uid=login_id)
+    #user = auth.authenticate(uid=login_id)
+    #pdb.set_trace()
     if user is not None:
-        auth_login(request, user)
+        auth_login(request,user)
+        #auth.login(request,user)
     return redirect('/')
     
 def logout(request):
