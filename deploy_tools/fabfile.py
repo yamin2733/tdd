@@ -1,10 +1,14 @@
 import random
 from fabric.contrib.files import append, exists
+#from fabric import Config, Connection, task
 from fabric.api import cd, env, local, run
 
 REPO_URL = 'https://github.com/yamin2733/tdd'  
 
 def deploy():
+    #host = env('host')
+    #user = env('user')
+    #connection = Connection(host=host, user=user, config=config)
     site_folder = f'/home/{env.user}/sites/{env.host}'  
     run(f'mkdir -p {site_folder}')  
     with cd(site_folder):  
