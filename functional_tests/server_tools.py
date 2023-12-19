@@ -1,9 +1,7 @@
-from fabric.api import cd,env, local, run
+from fabric.api import run
 from fabric.context_managers import settings, shell_env
 from .management.commands import create_session
 import pdb
-
-env.key_filename = '/Users/doll/.ssh/id_rsa'
 
 
 def _get_manage_dot_py(host):
